@@ -19,6 +19,14 @@ public class UserController {
 	@Autowired
 	UserService service;
 
+	public UserService getService() {
+		return service;
+	}
+
+	public void setService(UserService service) {
+		this.service = service;
+	}
+
 	@GetMapping(path="/getUser", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,produces = "application/json")
 	public @ResponseBody User getEmployees(@RequestBody User user) 
 	{
