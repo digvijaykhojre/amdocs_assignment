@@ -6,7 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+/**
+ * User entity class. Used for request response and db entity
+ * @author digvijayk
+ *
+ */
 @Entity
 @Table(name = "user")
 public class User {

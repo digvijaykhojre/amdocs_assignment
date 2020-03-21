@@ -6,7 +6,11 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-
+/**
+ * Spring security Configuration.
+ * @author digvijayk
+ *
+ */
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -24,7 +28,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     // Secure the endpoins with HTTP Basic authentication
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
+    	//No aunthentication for test api client/landing page 
         http
                 .httpBasic()
                 .and()

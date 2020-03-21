@@ -33,7 +33,7 @@ public class UserController {
 	{
 		User user=new User();
 		user.setUserId(userId);
-		System.out.println("User Id:"+user);
+		
 		user=service.getUser(user);
 		return user;
 	}
@@ -41,23 +41,23 @@ public class UserController {
 	@PostMapping(path="/saveUser", consumes = MediaType.APPLICATION_JSON_VALUE,produces = "application/json")
 	public @ResponseBody User saveUser(@RequestBody User user) 
 	{
-		System.out.println("User Id:"+user);
+		
 		user=service.saveUser(user);
 		return user;
 	}
 	
-	@PutMapping(path="/updateUser", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,produces = "application/json")
+	@PutMapping(path="/updateUser", consumes = MediaType.APPLICATION_JSON_VALUE,produces = "application/json")
 	public @ResponseBody User updateUser(@RequestBody User user) 
 	{
-		System.out.println("User Id:"+user);
+		
 		user=service.updateUser(user);
 		return user;
 	}
 	
-	@DeleteMapping(path="/deleteUser", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,produces = "application/json")
+	@DeleteMapping(path="/deleteUser", consumes = MediaType.APPLICATION_JSON_VALUE,produces = "application/json")
 	public @ResponseBody User deleteUser(@RequestBody User user) 
 	{
-		System.out.println("User Id:"+user);
+		
 		user=service.deleteUser(user);
 		return user;
 	}
@@ -68,7 +68,7 @@ public class UserController {
 	{ 
 		User user=new User();
 		user.setUserId(l);
-		System.out.println("User Id:"+user);
+		
 		user=service.getUser(user);
 		return user;
 	}
