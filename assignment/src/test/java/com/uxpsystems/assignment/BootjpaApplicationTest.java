@@ -51,17 +51,17 @@ public class BootjpaApplicationTest {
 	public void getExistingUser() throws Exception {
 		// "{ \"userId\": 102, \"userName\": \"\", \"password\": \"\", \"status\": \"\"
 		// }"
-		String uri = "/getUser";
+		String uri = "/getUser?userId=101";
 		User user = new User(101L, "", "", "");
 		ObjectMapper objectMapper = new ObjectMapper();
 		String jsonRequest = objectMapper.writeValueAsString(user);
 		System.out.println("Getting existing user Request:"+jsonRequest);
 		MvcResult mvcResult = mvc
 				.perform(MockMvcRequestBuilders.get(uri).contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
-						.accept(MediaType.APPLICATION_JSON_UTF8_VALUE).content(jsonRequest))
+						.accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
 				.andReturn();
 
-		int status = mvcResult.getResponse().getStatus();
+		
 		mvcResult.getResponse();
 		String content = mvcResult.getResponse().getContentAsString();
 		user = objectMapper.readValue(content, User.class);
@@ -79,17 +79,17 @@ public class BootjpaApplicationTest {
 	public void getNonExistingUser() throws Exception {
 		// "{ \"userId\": 102, \"userName\": \"\", \"password\": \"\", \"status\": \"\"
 		// }"
-		String uri = "/getUser";
+		String uri = "/getUser?userId=105";
 		User user = new User(105L, "", "", "");
 		ObjectMapper objectMapper = new ObjectMapper();
 		String jsonRequest = objectMapper.writeValueAsString(user);
 		System.out.println("Getting non existing user Response:"+jsonRequest);
 		MvcResult mvcResult = mvc
 				.perform(MockMvcRequestBuilders.get(uri).contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
-						.accept(MediaType.APPLICATION_JSON_UTF8_VALUE).content(jsonRequest))
+						.accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
 				.andReturn();
 
-		int status = mvcResult.getResponse().getStatus();
+		
 		mvcResult.getResponse();
 		String content = mvcResult.getResponse().getContentAsString();
 		user = objectMapper.readValue(content, User.class);
@@ -118,7 +118,7 @@ public class BootjpaApplicationTest {
 						.accept(MediaType.APPLICATION_JSON_UTF8_VALUE).content(jsonRequest))
 				.andReturn();
 
-		int status = mvcResult.getResponse().getStatus();
+		
 		mvcResult.getResponse();
 		String content = mvcResult.getResponse().getContentAsString();
 		user = objectMapper.readValue(content, User.class);
@@ -146,7 +146,7 @@ public class BootjpaApplicationTest {
 						.accept(MediaType.APPLICATION_JSON_UTF8_VALUE).content(jsonRequest))
 				.andReturn();
 
-		int status = mvcResult.getResponse().getStatus();
+		
 		mvcResult.getResponse();
 		String content = mvcResult.getResponse().getContentAsString();
 		user = objectMapper.readValue(content, User.class);
@@ -174,7 +174,7 @@ public class BootjpaApplicationTest {
 						.accept(MediaType.APPLICATION_JSON_UTF8_VALUE).content(jsonRequest))
 				.andReturn();
 
-		int status = mvcResult.getResponse().getStatus();
+		
 		mvcResult.getResponse();
 		String content = mvcResult.getResponse().getContentAsString();
 		user = objectMapper.readValue(content, User.class);
@@ -202,7 +202,7 @@ public class BootjpaApplicationTest {
 						.accept(MediaType.APPLICATION_JSON_UTF8_VALUE).content(jsonRequest))
 				.andReturn();
 
-		int status = mvcResult.getResponse().getStatus();
+		
 		mvcResult.getResponse();
 		String content = mvcResult.getResponse().getContentAsString();
 		user = objectMapper.readValue(content, User.class);

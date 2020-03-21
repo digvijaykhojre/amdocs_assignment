@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,15 +28,17 @@ public class UserController {
 		this.service = service;
 	}
 
-	@GetMapping(path="/getUser", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,produces = "application/json")
-	public @ResponseBody User getEmployees(@RequestBody User user) 
+	@GetMapping(path="/getUser", consumes = MediaType.APPLICATION_JSON_VALUE,produces = "application/json")
+	public @ResponseBody User getEmployees(@RequestParam("userId") Long  userId) 
 	{
+		User user=new User();
+		user.setUserId(userId);
 		System.out.println("User Id:"+user);
 		user=service.getUser(user);
 		return user;
 	}
 
-	@PostMapping(path="/saveUser", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,produces = "application/json")
+	@PostMapping(path="/saveUser", consumes = MediaType.APPLICATION_JSON_VALUE,produces = "application/json")
 	public @ResponseBody User saveUser(@RequestBody User user) 
 	{
 		System.out.println("User Id:"+user);
@@ -56,6 +59,17 @@ public class UserController {
 	{
 		System.out.println("User Id:"+user);
 		user=service.deleteUser(user);
+		return user;
+	}
+	
+	
+	@GetMapping(path="/testUser", consumes = MediaType.APPLICATION_JSON_VALUE,produces = "application/json")
+	public @ResponseBody User testUser(@RequestParam("userId") Long l) 
+	{ 
+		User user=new User();
+		user.setUserId(l);
+		System.out.println("User Id:"+user);
+		user=service.getUser(user);
 		return user;
 	}
 }
